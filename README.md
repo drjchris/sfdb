@@ -1,6 +1,6 @@
 # sfdb - SINGLE FILE DATABASE
 
-## Warning: this is quite possibly not the dabase you are looking for.
+## Warning: this is quite possibly not the database you are looking for.
 
 ## Concept
 
@@ -34,14 +34,16 @@ Make sure you have PIP installed.
 
     pip install "git+https://github.com/drjchris/sfdb.git#egg=sfdb"
 
-### Update
+To update to latest version you will just have to uninstall first, then reinstall.
 
-    pip install --upgrade "git+https://github.com/drjchris/sfdb.git#egg=sfdb"
+To check if you have the latest version
+
+   pip show sfdb
 
 ---
 <a name="creating-db"></a>
 
-## Createing a new db
+## Creating a new db
 
     import sfdb
 
@@ -49,7 +51,7 @@ Make sure you have PIP installed.
 
 - __dbname:__ the actual name of the db being created.
 - __dbdirectory:__ where the JSON file will be saved.
-- __overwrite:__ Checks to see if file exsits before overwriting. Default is `false`.
+- __overwrite:__ Checks to see if file exists before overwriting. Default is `false`.
 
 __sfdb file structure__
 
@@ -62,7 +64,7 @@ __sfdb file structure__
         'data': {}
     }
 
-Meta data provides some info about the databse itself. The `'type': 'sfdb'` thing is there to check that the JSON file is formated properly. But this is a future thing - not really checking in v-0.0.1.
+Meta data provides some info about the database itself. The `'type': 'sfdb'` thing is there to check that the JSON file is formatted properly. But this is a future thing - not really checking in v-0.0.1.
 
 `_data` is where all the db data lives.
 
@@ -80,7 +82,7 @@ In the current version (0.0.1) this will pretty much just load any old JSON file
 
 ## Adding an entry to the db
 
-Only one entry at a time. You need to supply your own id. The ID can pretty much be anyting you want
+Only one entry at a time. You need to supply your own id. The ID can pretty much be anything you want
 
     myid = '0079A'
     newdata = {'thekey1':'the val', 'thekey2': 'bad val'}
