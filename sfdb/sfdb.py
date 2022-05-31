@@ -34,7 +34,7 @@ def saveJson(jdata, thepath) -> None:
     pass
 
 # # # # # # THIS IS THE CLASS THAT DOES EVERYTHING # # # # # # # # # # #
-# the calss for the local db
+# the class for the local db
 class loaddb():
 
     def __init__(self, filepath) -> None:

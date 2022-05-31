@@ -34,11 +34,11 @@ Make sure you have PIP installed.
 
     pip install "git+https://github.com/drjchris/sfdb.git#egg=sfdb"
 
-To update to latest version you will just have to uninstall first, then reinstall.
+To update to latest version you will have to uninstall first, then reinstall.
 
 To check if you have the latest version
 
-   pip show sfdb
+    pip show sfdb
 
 ---
 <a name="creating-db"></a>
