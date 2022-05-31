@@ -17,15 +17,31 @@ Key principles and specifications.
 
 ## Table of Content
 
+ - [Installing](#install)
  - [Creating a new db](#creating-db)
  - [Loading existing sfdb database](#loading-db)
  - [Adding an entry to the db](#add-entry)
+ - [Editing an existing entry](#edit-entry)
  - [Searching the db](#searching-db)
  - [Saving all changes made](#commit)
 
 ---
+<a name="install"></a>
 
-## Createing a new db<a name="creating-db"></a>
+## Install
+
+Make sure you have PIP installed.
+
+    pip install "git+https://github.com/drjchris/sfdb.git#egg=sfdb"
+
+### Update
+
+    pip install --upgrade "git+https://github.com/drjchris/sfdb.git#egg=sfdb"
+
+---
+<a name="creating-db"></a>
+
+## Createing a new db
 
     import sfdb
 
@@ -51,14 +67,16 @@ Meta data provides some info about the databse itself. The `'type': 'sfdb'` thin
 `_data` is where all the db data lives.
 
 ---
+<a name="loading-db"></a>
 
-## Loading existing sfdb database <a name="loading-db"></a>
+## Loading existing sfdb database 
 
     mydb = sfdb.loaddb(filepath)
 
 In the current version (0.0.1) this will pretty much just load any old JSON file.
 
 ---
+<a name="add-entry"></a>
 
 ## Adding an entry to the db
 
@@ -83,8 +101,9 @@ The entry will appear as follows in the JSON file:
 It does check to make sure the ID has not been used yet. If it has, it will say `ERROR: ID 0079A already exists`.
 
 ---
+<a name="edit-entry"></a>
 
-## Edit an existing entry <a name="add-entry"></a>
+## Edit an existing entry 
 
 You need to know the ID of that specific entry. The edit function will only change the value of an existing key or add a new `key: value`.
 
@@ -108,8 +127,9 @@ The entry will now appear as follows in the JSON file:
 It does check to make sure the ID already exists. If it doesn't it will `ERROR: ID 0079A not found`.
 
 ---
+<a name="searching-db"></a>
 
-## Searching the db <a name="searching-db"></a>
+## Searching the db
 
 Search terms need to be constructed as a dictionary and can only do one at a time. Returns a list.
 
@@ -122,7 +142,9 @@ or...
 That's it for now.
 
 ---
-## Saving all changes made<a name="#commit"></a>
+<a name="commit"></a> 
+
+## Saving all changes made
 
 NOTE: sfdb will NOT save changes to the db unless you tell it to!
 

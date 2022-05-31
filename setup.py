@@ -4,7 +4,7 @@ setup(
     name='sfdb',
     version='0.0.1',
     description='An extremely barebones single-file database.',
-    url='https://github.com/shuds13/pyexample',
+    url='https://github.com/drjchris/sfdb',
     author='Jose Christian',
     author_email='j.christian@brighton.ac.uk',
     license='Apache License 2.0',
