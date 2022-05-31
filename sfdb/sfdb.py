@@ -11,10 +11,12 @@ def mkdb(dbname: str, filedir: str, overwrite=False) -> None:
     else:
         # the metadata
         jdata = {
-            'type': 'sfdb',
-            'name': dbname,
-            'info': '',
-            'data': {}
+            '_meta': {
+                'type': 'sfdb',
+                'name': dbname,
+                'info': ''
+            },
+            '_data': {}
         }
         with open(filedir, 'w') as fw:
             fw.write(dumps(jdata, ensure_ascii=False))
@@ -38,27 +40,27 @@ class loaddb():
     def __init__(self, filepath) -> None:
         self.dbdir = filepath
         self.raw = openJson(filepath)
-        self.name = self.raw['name']
-        self.info = self.raw['info']
-        self.idkeys = list(self.raw['data'].keys())
+        self.name = self.raw['_meta']['name']
+        self.info = self.raw['_meta']['info']
+        self.idkeys = list(self.raw['_data'].keys())
         pass
 
     # add entry
     def add(self, entid: str, newent: dict) -> None:
-        if entid in self.raw['data']:
-            print(entid, 'already exists.')
-        elif entid not in self.raw['data']:
+        if entid in self.raw['_data']:
+            print('ERROR: ID %s already exists.' % entid)
+        elif entid not in self.raw['_data']:
             newent['_dbid'] = entid
-            self.raw['data'][entid] = newent
+            self.raw['_data'][entid] = newent
         pass
 
     # edit entry
     def edit(self, entid: str, newent: dict) -> None:
-        if entid in self.raw['data']:
+        if entid in self.raw['_data']:
             for ek in newent:
-                self.raw['data'][entid][ek] = newent[ek]
-        elif entid not in self.raw['data']:
-            print(entid, 'not found')
+                self.raw['_data'][entid][ek] = newent[ek]
+        elif entid not in self.raw['_data']:
+            print('ERROR: ID', entid, 'not found')
         pass
 
 

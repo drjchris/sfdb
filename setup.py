@@ -9,9 +9,7 @@ setup(
     author_email='j.christian@brighton.ac.uk',
     license='Apache License 2.0',
     packages=['sfdb'],
-    install_requires=['json',
-                      'os'
-                      ],
+    install_requires=[],
 
     classifiers=[
         'Development Status :: 0.0.1 testing',
