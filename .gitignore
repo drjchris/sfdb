@@ -1,2 +1,4 @@
 # mac
 .DS_store
+.gitignore
+.vscode
