@@ -47,11 +47,8 @@ To check if you have the latest version
 
     import sfdb
 
-    sfdb.mkdb('mynewdb', dbdirectory, overwrite=False)
+    sfdb.mkdb('mynewdb', 'mydbfile.json', overwrite=False)
 
-- __dbname:__ the actual name of the db being created.
-- __dbdirectory:__ where the JSON file will be saved.
-- __overwrite:__ Checks to see if file exists before overwriting. Default is `false`.
 
 __sfdb file structure__
 
@@ -60,13 +57,17 @@ __sfdb file structure__
             'type': 'sfdb',
             'name': 'mynewdb',
             'info': '',
-        }
+        },
         'data': {}
     }
 
 Meta data provides some info about the database itself. The `'type': 'sfdb'` thing is there to check that the JSON file is formatted properly. But this is a future thing - not really checking in v-0.0.1.
 
 `_data` is where all the db data lives.
+
+To add db information in the metadata
+
+    mydb.addinfo("this is a nice table")
 
 ---
 <a name="loading-db"></a>

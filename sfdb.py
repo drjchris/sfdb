@@ -7,7 +7,7 @@ from os import path
 # make newdb
 def mkdb(dbname: str, filedir: str, overwrite=False) -> None:
     if path.isfile(filedir) and overwrite==False:
-        print('db exists...')
+        print('  sfdb: db file already exists...')
     else:
         # the metadata
         jdata = {
@@ -30,7 +30,7 @@ def openJson(thepath) -> dict:
 
 def saveJson(jdata, thepath) -> None:
     with open(thepath, 'w') as fw:
-        fw.write(dumps(jdata))
+        fw.write(dumps(jdata, ensure_ascii=False))
     pass
 
 # # # # # # THIS IS THE CLASS THAT DOES EVERYTHING # # # # # # # # # # #
@@ -48,7 +48,7 @@ class loaddb():
     # add entry
     def add(self, entid: str, newent: dict) -> None:
         if entid in self.raw['_data']:
-            print('ERROR: ID %s already exists.' % entid)
+            print('  sfdb ERROR: ID "%s" already exists.' % entid)
         elif entid not in self.raw['_data']:
             newent['_dbid'] = entid
             self.raw['_data'][entid] = newent
@@ -60,7 +60,7 @@ class loaddb():
             for ek in newent:
                 self.raw['_data'][entid][ek] = newent[ek]
         elif entid not in self.raw['_data']:
-            print('ERROR: ID', entid, 'not found')
+            print('  sfdb ERROR: ID "%s" not found' % entid)
         pass
 
 
@@ -69,11 +69,10 @@ class loaddb():
         # declare list output
         listout = []
 
-        for idk in self.raw['data']:
-            ent = self.raw['data'][idk]
+        for idk in self.raw['_data']:
+            ent = self.raw['_data'][idk]
             skey = list(searchdict.keys())[0]
             sval = searchdict[skey]
-            print(skey, sval)
             if skey in ent:
                 if ent[skey]==sval:
                     listout.append(ent)
@@ -86,5 +85,5 @@ class loaddb():
 
     # add info
     def addinfo(self, information: str) -> None:
-        self.raw['info'] = information
+        self.raw['_meta']['info'] = information
         pass
