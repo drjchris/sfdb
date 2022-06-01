@@ -61,7 +61,7 @@ __sfdb file structure__
         'data': {}
     }
 
-Meta data provides some info about the database itself. The `'type': 'sfdb'` thing is there to check that the JSON file is formatted properly. But this is a future thing - not really checking in v-0.0.1.
+Meta data provides some info about the database itself. The `'type': 'sfdb'` thing is there to check that the JSON file is formatted properly. But this is a future thing - not really checking in v-0.0.2.
 
 `_data` is where all the db data lives.
 
@@ -76,7 +76,7 @@ To add db information in the metadata
 
     mydb = sfdb.loaddb(filepath)
 
-In the current version (0.0.1) this will pretty much just load any old JSON file.
+In the current version (0.0.2) this will pretty much just load any old JSON file.
 
 ---
 <a name="add-entry"></a>
@@ -101,7 +101,7 @@ The entry will appear as follows in the JSON file:
         }
     }
 
-It does check to make sure the ID has not been used yet. If it has, it will say `ERROR: ID 0079A already exists`.
+It does check to make sure the ID has not been used yet. If it has, it will say `sfdb ERROR: ID "0079A" already exists`.
 
 ---
 <a name="edit-entry"></a>
@@ -113,7 +113,7 @@ You need to know the ID of that specific entry. The edit function will only chan
     myid = "0079A"
     newkeyvals = {"thekey2": "good val", "thekey3": "new val"}
 
-    mydb.edit(theid, newkeyvals)
+    mydb.edit(myid, newkeyvals)
 
 The entry will now appear as follows in the JSON file:
 
@@ -127,7 +127,7 @@ The entry will now appear as follows in the JSON file:
         }
     }
 
-It does check to make sure the ID already exists. If it doesn't it will `ERROR: ID 0079A not found`.
+It does check to make sure the ID already exists. If it doesn't it will say `sfdb ERROR: ID "0079A" not found`.
 
 ---
 <a name="searching-db"></a>
