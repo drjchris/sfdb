@@ -40,9 +40,10 @@ class loaddb():
     def __init__(self, filepath) -> None:
         self.dbdir = filepath
         self.raw = openJson(filepath)
+        self.data = self.raw['_data']
         self.name = self.raw['_meta']['name']
         self.info = self.raw['_meta']['info']
-        self.idkeys = list(self.raw['_data'].keys())
+        self.dbids = list(self.raw['_data'].keys())
         pass
 
     # add entry
@@ -87,3 +88,6 @@ class loaddb():
     def addinfo(self, information: str) -> None:
         self.raw['_meta']['info'] = information
         pass
+
+    def get(self, thedbid) -> dict:
+        return self.data[thedbid]
